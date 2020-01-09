@@ -29,3 +29,25 @@ class Solution:
             if prices[curr_index-1] > prices[buy_index]:
                 profit += prices[curr_index-1] - prices[buy_index]
             return profit
+#189
+# Python list [a:b) includes a but does not include b
+# O(1) space complexity
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k = k%len(nums)
+        count = 0
+        index_initial = 0
+        while count < len(nums):
+            i = index_initial 
+            curr = nums[i]
+            while True:
+                j = (i+k)%len(nums)
+                nums[j],curr = curr,nums[j]
+                i = j
+                count += 1
+                if j == index_initial:
+                    index_initial += 1  
+                    break
